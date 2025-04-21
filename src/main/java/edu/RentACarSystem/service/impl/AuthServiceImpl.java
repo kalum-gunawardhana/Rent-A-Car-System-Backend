@@ -16,8 +16,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserDto createCustomer(SignupRequest signupRequest) {
-        /*UserEntity userEntity = new UserEntity(null, signupRequest.getName(), signupRequest.getEmail(), signupRequest.getPassword(), UserRole.CUSTOMER);
-        userDao.save(userEntity);*/
 
         UserEntity user = new UserEntity();
         user.setName(signupRequest.getName());

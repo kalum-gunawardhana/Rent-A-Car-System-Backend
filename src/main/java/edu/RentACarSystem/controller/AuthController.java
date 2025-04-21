@@ -3,7 +3,6 @@ package edu.RentACarSystem.controller;
 import edu.RentACarSystem.dto.SignupRequest;
 import edu.RentACarSystem.dto.UserDto;
 import edu.RentACarSystem.service.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +17,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> createCustomer(@RequestBody SignupRequest signupRequest){
+        System.out.println(signupRequest);
         UserDto customer = authService.createCustomer(signupRequest);
         if (customer==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request!");
         return ResponseEntity.status(HttpStatus.CREATED).body(customer);
