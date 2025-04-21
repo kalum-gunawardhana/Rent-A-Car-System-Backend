@@ -15,5 +15,5 @@ public class UserDto {
 
     private String password;
 
-    private UserRole role;
+    private UserRole role; // "ADMIN" or "CUSTOMER"
 }

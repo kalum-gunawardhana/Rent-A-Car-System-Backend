@@ -20,5 +20,5 @@ public class BookingDto {
 
     private LocalDate endDate;
 
-    private BookingStatus status;
+    private BookingStatus status; // PENDING, APPROVED, REJECTED
 }

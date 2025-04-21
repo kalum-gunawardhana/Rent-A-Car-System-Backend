@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Data
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "Bookings")
+@Setter
 public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +33,5 @@ public class BookingEntity {
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    private BookingStatus status;
+    private BookingStatus status; // PENDING, APPROVED, REJECTED
 }

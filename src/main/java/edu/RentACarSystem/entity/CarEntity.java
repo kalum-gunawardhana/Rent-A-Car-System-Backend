@@ -2,6 +2,7 @@ package edu.RentACarSystem.entity;
 
 import edu.RentACarSystem.enums.CarBrand;
 import edu.RentACarSystem.enums.CarModel;
+import edu.RentACarSystem.enums.CarType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +27,7 @@ public class CarEntity {
     private Double pricePerDate;
 
     private Boolean available;
+
+    @Enumerated(EnumType.STRING)
+    private CarType type; // SUV, Sedan, etc.
 }
