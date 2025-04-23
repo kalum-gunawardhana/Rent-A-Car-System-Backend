@@ -10,6 +10,8 @@ import edu.RentACarSystem.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthServiceImpl implements AuthService {
     @Autowired
@@ -36,7 +38,16 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserDto loginCustomer(LoginRequest loginRequest) {
-        return null;
+    public Boolean loginCustomer(LoginRequest loginRequest) {
+        Optional<UserEntity> optionalUser = userDao.findByEmail(loginRequest.getEmail());
+
+        if (optionalUser.isPresent()) {
+            UserEntity user = optionalUser.get();
+
+            // In production, use a password encoder like BCrypt instead of plain comparison
+            return user.getPassword().equals(loginRequest.getPassword());
+        }
+
+        return false;
     }
 }

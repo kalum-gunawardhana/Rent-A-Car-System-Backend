@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -18,13 +19,19 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> createCustomer(@RequestBody SignupRequest signupRequest){
-        //System.out.println(signupRequest);
         UserDto customer = authService.createCustomer(signupRequest);
         if (customer==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request!");
         return ResponseEntity.status(HttpStatus.CREATED).body(customer);
     }
 
+    @PostMapping("/login")
     public ResponseEntity<?> loginCustomer(@RequestBody LoginRequest loginRequest){
+        boolean isAuthenticated = authService.loginCustomer(loginRequest);
 
+        if (isAuthenticated) {
+            return ResponseEntity.ok(Map.of("message", "Login successful"));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
     }
 }

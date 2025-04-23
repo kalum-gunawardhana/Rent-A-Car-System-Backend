@@ -6,5 +6,5 @@ import edu.RentACarSystem.dto.UserDto;
 
 public interface AuthService {
     UserDto createCustomer(SignupRequest signupRequest);
-    UserDto loginCustomer(LoginRequest loginRequest);
+    Boolean loginCustomer(LoginRequest loginRequest);
 }
