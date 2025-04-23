@@ -1,5 +1,6 @@
 package edu.RentACarSystem.controller;
 
+import edu.RentACarSystem.dto.LoginRequest;
 import edu.RentACarSystem.dto.SignupRequest;
 import edu.RentACarSystem.dto.UserDto;
 import edu.RentACarSystem.service.AuthService;
@@ -17,9 +18,13 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> createCustomer(@RequestBody SignupRequest signupRequest){
-        System.out.println(signupRequest);
+        //System.out.println(signupRequest);
         UserDto customer = authService.createCustomer(signupRequest);
         if (customer==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request!");
         return ResponseEntity.status(HttpStatus.CREATED).body(customer);
+    }
+
+    public ResponseEntity<?> loginCustomer(@RequestBody LoginRequest loginRequest){
+
     }
 }

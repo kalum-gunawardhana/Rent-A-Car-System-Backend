@@ -1,12 +1,13 @@
 package edu.RentACarSystem.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class SignupRequest {
-    private String username;
+public class LoginRequest {
     private String email;
     private String password;
 }

@@ -1,5 +1,6 @@
 package edu.RentACarSystem.service.impl;
 
+import edu.RentACarSystem.dto.LoginRequest;
 import edu.RentACarSystem.dto.SignupRequest;
 import edu.RentACarSystem.dto.UserDto;
 import edu.RentACarSystem.entity.UserEntity;
@@ -18,7 +19,7 @@ public class AuthServiceImpl implements AuthService {
     public UserDto createCustomer(SignupRequest signupRequest) {
 
         UserEntity user = new UserEntity();
-        user.setName(signupRequest.getName());
+        user.setName(signupRequest.getUsername());
         user.setEmail(signupRequest.getEmail());
         user.setPassword(signupRequest.getPassword());
         user.setRole(UserRole.CUSTOMER);
@@ -32,5 +33,10 @@ public class AuthServiceImpl implements AuthService {
         userDto.setRole(userEntity.getRole());
 
         return userDto;
+    }
+
+    @Override
+    public UserDto loginCustomer(LoginRequest loginRequest) {
+        return null;
     }
 }
